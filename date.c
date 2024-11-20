@@ -57,7 +57,6 @@ void convertisseur(const struct sDate dateToConv, tresLong * variable) {
     dateConv += dateToConv.jour *  (tresLong) 10000;
     dateConv += dateToConv.heure * (tresLong) 100;
     dateConv += dateToConv.minute;
-    printf("%lld\n", dateConv);
     *variable = dateConv;
 }
 
@@ -68,9 +67,7 @@ int Compare(const struct sDate reference, const struct sDate autreDate){
     convertisseur(reference, &referenceConv);
     convertisseur(autreDate, &autreDateConv);
 
-
-
-    printf("%lld\n", totalConv);
+    tresLongNormal totalConv = referenceConv - autreDateConv;
 
     if (totalConv > 0){
         return 1;
@@ -82,3 +79,27 @@ int Compare(const struct sDate reference, const struct sDate autreDate){
         return 0;
     }
 }
+
+int Appartient(const struct sDate date, const struct sDate debut, const struct sDate fin){
+    if (Compare(debut, date) <= 0 && Compare(date, fin) <= 0){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+int Chevauche(const struct sDate debut1, const struct sDate fin1, const struct sDate debut2, const struct sDate fin2){
+
+    if (Appartient(debut2, debut1, fin1) || Appartient(fin2, debut1, fin1)){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+void YYYYMMDDTHHMM(char* destination, const struct sDate date){
+    sprintf(destination, "%04d%02d%02dT%02d%02d", date.annee, date.mois, date.jour, date.heure, date.minute);
+}
+
