@@ -101,5 +101,6 @@ int Chevauche(const struct sDate debut1, const struct sDate fin1, const struct s
 
 void YYYYMMDDTHHMM(char* destination, const struct sDate date){
     sprintf(destination, "%04d%02d%02dT%02d%02d", date.annee, date.mois, date.jour, date.heure, date.minute);
+    destination[15] = '\0';
 }
 

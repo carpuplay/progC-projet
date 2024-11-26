@@ -1,4 +1,5 @@
 #include "date.h"
+#include "evenement.h"
 #include <stdio.h>
 
 int main(void) {
@@ -30,6 +31,7 @@ int main(void) {
     numan.jour = 06;
     numan.minute = 14;
 
+
     char resultat[20];
     
     printf("%d\n", EstValide(test));
@@ -43,6 +45,8 @@ int main(void) {
     YYYYMMDDTHHMM(resultat, test);
     printf("YYYYMMDDTHHMM: %s\n", resultat);
 
-    
+
+
+
     return 0;
 }
